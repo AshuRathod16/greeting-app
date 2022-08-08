@@ -1,6 +1,7 @@
 package com.bridgelabz.greetingapp.service;
 
-import com.bridgelabz.greetingapp.model.Greeting;
+import com.bridgelabz.greetingapp.Dto.GreetingAppDto;
+import com.bridgelabz.greetingapp.Dto.UserDto;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.atomic.AtomicLong;
@@ -12,8 +13,15 @@ public class GreetingService implements IGreetingService {
 
 
     @Override
-    public Greeting greetingMessage() {
-        return new Greeting(counter.incrementAndGet(), String.format(template));
+    public GreetingAppDto greetingMessage() {
+        return new GreetingAppDto(counter.incrementAndGet(), String.format(template));
+    }
+
+    @Override
+    public GreetingAppDto greetingMessageByName( UserDto userDto) {
+        return new GreetingAppDto(counter.incrementAndGet(),
+                String.format(template, userDto.getFirstName()) + userDto.getLastName());
+
     }
 
 }
