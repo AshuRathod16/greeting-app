@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class GreetingService implements IGreetingService {
-    private static final String template = "Hello world";
+    private static final String template = "Hello world!";
     private final AtomicLong counter = new AtomicLong();
 
 
@@ -15,4 +15,5 @@ public class GreetingService implements IGreetingService {
     public Greeting greetingMessage() {
         return new Greeting(counter.incrementAndGet(), String.format(template));
     }
+
 }
