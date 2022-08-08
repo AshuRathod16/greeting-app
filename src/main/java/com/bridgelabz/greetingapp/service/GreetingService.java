@@ -1,7 +1,9 @@
 package com.bridgelabz.greetingapp.service;
 
-import com.bridgelabz.greetingapp.dto.GreetingAppDto;
 import com.bridgelabz.greetingapp.dto.GreetingUserDto;
+import com.bridgelabz.greetingapp.model.GreetingAppModel;
+import com.bridgelabz.greetingapp.repository.GreetingAppRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.atomic.AtomicLong;
@@ -11,15 +13,19 @@ public class GreetingService implements IGreetingService {
     private static final String template = "Hello, %s";
     private final AtomicLong counter = new AtomicLong();
 
+    @Autowired
+    private GreetingAppRepository greetingAppRepository;
+
 
     @Override
-    public GreetingAppDto greetingMessage() {
-        return new GreetingAppDto(counter.incrementAndGet(), String.format(template));
+    public GreetingAppModel greetingMessage() {
+        return greetingAppRepository.save(new GreetingAppModel(String.format(template, "Ashwini!")));
     }
 
     @Override
-    public GreetingAppDto greetingMessageByName(GreetingUserDto greetingUserDto) {
-        return new GreetingAppDto(counter.incrementAndGet(), String.format(template, greetingUserDto.getFirstName()) + " " + greetingUserDto.getLastName());
+    public GreetingAppModel greetingMessageByName(GreetingUserDto greetingUserDto) {
+        return greetingAppRepository.save(new GreetingAppModel(String.format(template, greetingUserDto.getFirstName()) + " " + greetingUserDto.getLastName()));
     }
+
 
 }
