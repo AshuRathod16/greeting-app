@@ -1,4 +1,4 @@
-package com.bridgelabz.greetingapp.Dto;
+package com.bridgelabz.greetingapp.dto;
 
 import lombok.Data;
 
@@ -11,4 +11,5 @@ public class GreetingAppDto {
         this.id = id;
         this.message = message;
     }
+
 }

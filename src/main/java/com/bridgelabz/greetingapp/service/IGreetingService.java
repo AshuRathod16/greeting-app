@@ -1,12 +1,14 @@
 package com.bridgelabz.greetingapp.service;
 
-import com.bridgelabz.greetingapp.Dto.GreetingAppDto;
-import com.bridgelabz.greetingapp.Dto.UserDto;
+import com.bridgelabz.greetingapp.dto.GreetingAppDto;
+import com.bridgelabz.greetingapp.dto.GreetingUserDto;
 
 
 public interface IGreetingService {
     GreetingAppDto greetingMessage();
 
-    GreetingAppDto greetingMessageByName(UserDto userDto);
+    GreetingAppDto greetingMessageByName(GreetingUserDto greetingUserDto);
+
+
 
 }
