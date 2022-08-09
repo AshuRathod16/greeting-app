@@ -59,4 +59,15 @@ public class GreetingService implements IGreetingService {
             throw new RuntimeException();
     }
 
+    @Override
+    public GreetingAppModel deleteMessage(long id) {
+        Optional<GreetingAppModel> isIdPresent = greetingAppRepository.findById(id);
+        if (isIdPresent.isPresent()) {
+            greetingAppRepository.save(isIdPresent.get());
+            return isIdPresent.get();
+        } else {
+            throw new RuntimeException();
+        }
+    }
+
 }

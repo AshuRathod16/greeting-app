@@ -66,4 +66,9 @@ public class GreetingController {
     public GreetingAppModel editGreetMessage(@PathVariable long id, @RequestParam GreetingAppDto greetingAppDto) {
         return greetingService.updateGreetMessage(id, greetingAppDto);
     }
+
+    @DeleteMapping("/deletemessage/{id}")
+    public GreetingAppModel deleteMessage(@PathVariable long id) {
+        return greetingService.deleteMessage(id);
+    }
 }

@@ -18,4 +18,6 @@ public interface IGreetingService {
     List<GreetingAppModel> getAllGreetingMessage();
 
     GreetingAppModel updateGreetMessage(long id, GreetingAppDto greetingAppDto);
+
+    GreetingAppModel deleteMessage(long id);
 }
