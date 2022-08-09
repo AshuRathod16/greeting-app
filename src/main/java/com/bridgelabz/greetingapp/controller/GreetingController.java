@@ -60,4 +60,10 @@ public class GreetingController {
     public List<GreetingAppModel> allGreetingMessage() {
         return greetingService.getAllGreetingMessage();
     }
+
+    //UC7
+    @PutMapping("/editmessage/{id}")
+    public GreetingAppModel editGreetMessage(@PathVariable long id, @RequestParam GreetingAppDto greetingAppDto) {
+        return greetingService.updateGreetMessage(id, greetingAppDto);
+    }
 }

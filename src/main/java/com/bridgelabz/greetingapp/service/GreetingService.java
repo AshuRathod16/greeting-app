@@ -1,5 +1,6 @@
 package com.bridgelabz.greetingapp.service;
 
+import com.bridgelabz.greetingapp.dto.GreetingAppDto;
 import com.bridgelabz.greetingapp.dto.GreetingUserDto;
 import com.bridgelabz.greetingapp.model.GreetingAppModel;
 import com.bridgelabz.greetingapp.repository.GreetingAppRepository;
@@ -43,6 +44,17 @@ public class GreetingService implements IGreetingService {
         List<GreetingAppModel> getAllGreetingMessage = greetingAppRepository.findAll();
         if (getAllGreetingMessage.size() > 0) {
             return getAllGreetingMessage;
+        } else
+            throw new RuntimeException();
+    }
+
+    @Override
+    public GreetingAppModel updateGreetMessage(long id, GreetingAppDto greetingAppDto) {
+        Optional<GreetingAppModel> updateMessage = greetingAppRepository.findById(id);
+        if (updateMessage.isPresent()) {
+            updateMessage.get().setMessage(greetingAppDto.getMessage());
+            greetingAppRepository.save(updateMessage.get());
+            return updateMessage.get();
         } else
             throw new RuntimeException();
     }
